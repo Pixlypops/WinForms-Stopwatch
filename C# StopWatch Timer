@@ -1,0 +1,54 @@
+namespace Stop_Watch_Practise
+{
+public partial class stopWatch : Form
+{
+private DateTime startTime;
+private bool isRunning = false;
+private TimeSpan elapsedTime;
+public stopWatch()
+{
+InitializeComponent();
+}
+
+```
+    private void btnStart_Click(object sender, EventArgs e)
+    {
+        if (!isRunning)
+        {
+            startTime = DateTime.Now;
+            timer1.Start();
+            isRunning = true;
+            StartInput.Text = startTime.ToString("HH:mm:ss");
+        }
+    }
+
+    private void btnStop_Click(object sender, EventArgs e)
+    {
+
+        if (isRunning)
+        {
+            timer1.Stop();
+            isRunning = false;
+            elapsedTime = DateTime.Now - startTime;
+            textBox3.Text = DateTime.Now.ToString("HH:mm:ss");
+            txtElaspsedTime.Text = elapsedTime.TotalSeconds.ToString("F2");
+
+        }
+    }
+    private void timer1_Tick(object sender, EventArgs e)
+    {
+        elapsedTime = DateTime.Now - startTime;
+        txtElaspsedTime.Text = elapsedTime.TotalSeconds.ToString("F2");
+    }
+
+    private void btnExit_Click(object sender, EventArgs e)
+    {
+        Application.Exit();
+    }
+
+}
+
+```
+
+}
+
